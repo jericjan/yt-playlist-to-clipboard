@@ -1,5 +1,5 @@
 # yt-playlist-to-clipboard
-A simple python program that sends vids in a youtube playlist to your clipboard one by one.
+A simple python program that sends vids in a youtube playlist to your clipboard one by one. I mainly made this so I could mass paste videos into Discord's Watch Together feature. 
 
 Somet things to take note of:
 - This will need **youtube-dl.exe** in the same path as itself.
