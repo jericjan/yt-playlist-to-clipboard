@@ -5,8 +5,10 @@ import json
 
 print('Enter your YT playlist:')
 url = input()
+print("Enter prefix: (blank to skip)")
+prefix = input()
 print("\nPlease wait...\n")
-process = Popen(['youtube-dl', '--dump-json', '--flat-playlist',url], stdout=PIPE, stderr=PIPE)
+process = Popen(['youtube-dl', '--dump-json', '--flat-playlist',url], stdout=PIPE, stderr=PIPE, stdin=PIPE)
 stdout, stderr = process.communicate()
 str_output = stdout.decode("utf-8")
 str_output = str_output.splitlines()
@@ -18,12 +20,17 @@ json_output = json.loads(str_output)
 title_list = []    
 url_list = []
 for i in json_output:
-    x = i['title']
-    title_list.append(x)
-    x = i['id']
-    x = "https://youtu.be/"+x
-    url_list.append(x)
-    
+    if "youtube" in url:
+        x = i['title']
+        title_list.append(x)
+        x = i['id']
+        x = prefix + "https://youtu.be/"+x
+        url_list.append(x)
+    elif "soundcloud" in url:
+        x = i['title']
+        title_list.append(x)
+        x = prefix + i['url']
+        url_list.append(x)        
 title_list.reverse()
 url_list.reverse()    
 
