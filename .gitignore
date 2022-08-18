@@ -1,0 +1,10 @@
+__pycache__/
+URLs.txt
+build/
+dist/
+git.lnk
+main - Copy.py
+manual.txt
+venv.lnk
+venv/
+youtube-dl.exe
